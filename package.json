@@ -5,7 +5,7 @@
   "main": "src/app.ts",
   "scripts": {
     "linter": "./node_modules/.bin/eslint src/*",
-    "run": "tsc && node build/app.js"
+    "start": "tsc && node build/app.js"
   },
   "repository": {
     "type": "git",
