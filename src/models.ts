@@ -82,6 +82,7 @@ export {
 	Shop,
 	Shifts,
 	Cities,
+	gender,
 	Cashier,
 	Addresses,
 	ShopNames,
