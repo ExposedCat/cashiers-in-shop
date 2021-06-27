@@ -1,0 +1,36 @@
+{
+  "name": "task4",
+  "version": "1.0.0",
+  "description": "Node.js vacancy Test task 4",
+  "main": "src/app.ts",
+  "scripts": {
+    "linter": "./node_modules/.bin/eslint src/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ExposedCat/cashiers-in-shop.git"
+  },
+  "keywords": [
+    "shop",
+    "cashiers",
+    "node",
+    "js"
+  ],
+  "author": "ExposedCat",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/ExposedCat/cashiers-in-shop/issues"
+  },
+  "homepage": "https://github.com/ExposedCat/cashiers-in-shop#readme",
+  "devDependencies": {
+    "@types/node": "^15.12.4",
+    "@types/pg": "^8.6.0",
+    "@typescript-eslint/eslint-plugin": "^4.28.0",
+    "@typescript-eslint/parser": "^4.28.0",
+    "eslint": "^7.29.0",
+    "eslint-config-airbnb": "^18.2.1"
+  },
+  "dependencies": {
+    "pg-promise": "^10.10.2"
+  }
+}
