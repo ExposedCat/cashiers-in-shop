@@ -4,7 +4,8 @@
   "description": "Node.js vacancy Test task 4",
   "main": "src/app.ts",
   "scripts": {
-    "linter": "./node_modules/.bin/eslint src/*"
+    "linter": "./node_modules/.bin/eslint src/*",
+    "run": "tsc && node build/app.js"
   },
   "repository": {
     "type": "git",
