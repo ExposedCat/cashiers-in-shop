@@ -67,7 +67,54 @@ async function getTargetCashiers1(): Promise<Cashier[]> {
     return cashiers
 }
 
+async function getTargetCashiers2(): Promise<Cashier[]> {
+    const cashiers: Cashier[] = await db.any(`
+        SELECT
+            Cashiers.*,
+            CashRegisters.number
+        FROM
+            "Shops" as Shops,
+            "Shifts" as Shifts,
+            "Cashiers" as Cashiers,
+            "Addresses" as Addresses,
+            "ShopNames" as ShopNames,
+            "ShiftTypes" as ShiftTypes,
+            "StreetNames" as StreetNames,
+            "CashRegisters" as CashRegisters,
+            "CashiersShops" as CashiersShops
+        WHERE
+                Cashiers.id = CashiersShops."cashierId"
+            AND
+                Shops.id = CashiersShops."shopId"
+            AND
+                Shops."nameId" = ShopNames.id
+            AND
+                Shops."addressId" = Addresses.id
+            AND
+                Addresses."streetId" = StreetNames.id
+            AND
+                CONCAT(StreetNames.name, ' ', Addresses.address) = 'Шевченка 100'
+            AND
+                CashRegisters.id = CashiersShops."cashRegisterId"
+            AND
+                (CashRegisters.number % 2) <> 0
+            AND
+                ShopNames.name = 'ATB'
+            AND
+                CashiersShops."shiftId" = Shifts.id
+            AND
+                Shifts."typeId" = ShiftTypes.id
+            AND
+                ShiftTypes.name = 'Ночная'
+            AND
+                CashiersShops."dateEnd" IS NULL
+    `)
+
+    return cashiers
+}
+
 export {
     getAllCashiers,
-    getTargetCashiers1
+    getTargetCashiers1,
+    getTargetCashiers2
 }
