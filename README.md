@@ -5,8 +5,10 @@ TypeScript backend for cashiers service (<a href="https://docs.google.com/docume
 
 ## Usage
 
-Change database and user info at `src/config.ts` (default db is `shop-db` on localhost port `5432` with user `shop-admin` and password `uck202urP`).  
-Run `npm start` in project root to compile and run program.  
+Change database and user info at `db/db.env` (default db is `shop-db` on localhost port `5432` with user `shop-admin` and password `uck202urP`).  
+Run `npm start` in project root with variables from `db/db.env` file to compile and run program.  
+
+P.S. Run `env $(cat ./db/db.env | xargs) npm start` to pass variables from `db/db.env` to program. (Requires `xargs` and `cat`)
 
 ## Dependencies
 
