@@ -17,8 +17,9 @@ async function getAllCashiers(): Promise<Cashier[]> {
 
 async function getTargetCashiers1(): Promise<Cashier[]> {
     const cashiers: Cashier[] = await db.any(`
-        SELECT
-            Cashiers.*
+        SELECT DISTINCT
+            Cashiers.*,
+            GET_CASHIER_EXPERIENCE(Cashiers.id) as exp
         FROM
             "Shops" as Shops,
             "Cities" as Cities,
@@ -69,9 +70,8 @@ async function getTargetCashiers1(): Promise<Cashier[]> {
 
 async function getTargetCashiers2(): Promise<Cashier[]> {
     const cashiers: Cashier[] = await db.any(`
-        SELECT
-            Cashiers.*,
-            CashRegisters.number
+        SELECT DISTINCT
+            Cashiers.*
         FROM
             "Shops" as Shops,
             "Shifts" as Shifts,
@@ -105,6 +105,8 @@ async function getTargetCashiers2(): Promise<Cashier[]> {
             AND
                 Shifts."typeId" = ShiftTypes.id
             AND
+                Shifts."weekday" = 1
+            AND
                 ShiftTypes.name = 'Ночная'
             AND
                 CashiersShops."dateEnd" IS NULL
@@ -118,3 +120,5 @@ export {
     getTargetCashiers1,
     getTargetCashiers2
 }
+
+
